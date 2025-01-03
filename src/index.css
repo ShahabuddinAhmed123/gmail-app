@@ -8,6 +8,6 @@ body {
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 2px;
 }
