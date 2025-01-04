@@ -1,14 +1,16 @@
 import "./App.css";
 import Header from "./components/Header";
-import NoteState from "./context/note/NoteState.jsx";
+import SentContext, { CheckProvider } from "./context/note/SentContext.jsx"
+import { SentProvider } from "./context/note/SentContext.jsx";
+// import { CheckProvider } from "./context/note/SentContext.jsx";
 
 function App() {
   return (
-    <NoteState>
-      <div className="App">
-        <Header />
-      </div>
-    </NoteState>
+    <SentProvider>
+      {/* <CheckProvider> */}
+      <Header />
+      {/* </CheckProvider> */}
+    </SentProvider>
   );
 }
 

@@ -6,26 +6,13 @@ import image3 from "../assets/Icon3.png";
 import image4 from "../assets/Icon4.png";
 import image5 from "../assets/Icon5.png";
 import image6 from "../assets/Icon6.png";
-import { SentContext } from '../context/note/SentContext';
 
-const MailDetail = () => {
+const DraftDetails = () => {
   const { selectedEmail, setSelectedEmail } = useContext(InboxContext);
-
-  const [email, setEmail] = useState('');
-  const { sendEmail } = useContext(SentContext);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email.trim()) {
-      sendEmail(email);
-      setEmail('');
-    }
-    // console.log(email)
-  };
 
   if (!selectedEmail) {
     return (
-      <div className="w-[60vw] max-[1200px]:hidden h-full flex items-center justify-center text-gray-500">
+      <div className="w-[1200px] max-[1200px]:hidden h-full border flex items-center justify-center text-gray-500">
         <p>Select an email to view details</p>
       </div>
     );
@@ -33,7 +20,7 @@ const MailDetail = () => {
 
   return (
     <div className="w-full h-full border max-[1200px]:fixed max-[1200px]:bg-white max-[1200px]:w-auto">
-      <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between">
+      <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between ">
         <div className="flex items-center cursor-pointer gap-6">
           <img className="h-[20px] w-[20px]" src={image1} alt="" />
           <img className="h-[20px] w-[20px]" src={image2} alt="" />
@@ -50,6 +37,9 @@ const MailDetail = () => {
           <div className="text-[#adadad]">|</div>
           <div className="mt-1 text-[17px]">
             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          </div>
+          <div className="text-[20px] mt-1 ">
+          <ion-icon name="close-circle-outline"></ion-icon>
           </div>
         </div>
       </div>
@@ -68,7 +58,7 @@ const MailDetail = () => {
           <p>{selectedEmail.Date}</p>, <p>{selectedEmail.Time}</p>
         </div>
       </div>
-      <div className=" pb-20 max-[1440px]:pb-10 max-[1200px]:pb-6 max-[1200px]:text-[15px] border-b border-[#adadad] p-4 text-left">
+      <div className="h-[552px] border-b border-[#adadad] p-4 text-left">
         <h1>{selectedEmail.MailHeading}</h1>
         <p>{selectedEmail.MailContent}</p>
         <br />
@@ -82,15 +72,12 @@ const MailDetail = () => {
 
       <div className="py-4 flex flex-col gap-6">
         <textarea
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
           placeholder={`Reply ${selectedEmail.Name}...`}
-          className="w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#333232] border-2 mx-auto"
+          className="w-[97%] h-[80px] p-5 placeholder:text-[#333232] border-2 mx-auto"
         ></textarea>
         <div className="flex px-4 w-full justify-between items-center">
           <div className="cursor-pointer">Mute this thread</div>
           <button 
-          onClick={handleSubmit}
           type="submit"
           className="w-[58px] h-[33px] text-white bg-black rounded-lg">
             Send
@@ -101,5 +88,4 @@ const MailDetail = () => {
   );
 };
 
-export default MailDetail;
-
+export default DraftDetails;

@@ -11,3 +11,20 @@ body {
 ::-webkit-scrollbar {
   width: 2px;
 }
+#StellarMail{
+  animation-name: animate;
+  animation-duration: 1s;
+}
+@keyframes animate{
+  0%{
+    opacity: 0;
+    scale: 0;
+  }
+  50%{
+    scale: 1.1;
+  }
+  100%{
+    opacity: 1;
+    scale: 1;
+  }
+}
