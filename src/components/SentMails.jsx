@@ -56,7 +56,7 @@ const SentMails = () => {
           </div>
         </div>
         <div className="h-[] border-b border-[#adadad] p-5 pb-20 text-left">
-         {sentEmails}
+         Reply: {sentEmails}
         </div>
   
       </div>

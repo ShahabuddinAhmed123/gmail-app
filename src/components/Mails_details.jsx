@@ -8,8 +8,9 @@ import image5 from "../assets/Icon5.png";
 import image6 from "../assets/Icon6.png";
 import { SentContext } from '../context/note/SentContext';
 
-const MailDetail = () => {
-  const { selectedEmail, setSelectedEmail } = useContext(InboxContext);
+const MailDetail = ({ handleDelete }) => {
+
+  const { selectedEmail } = useContext(InboxContext);
 
   const [email, setEmail] = useState('');
   const { sendEmail } = useContext(SentContext);
@@ -20,8 +21,8 @@ const MailDetail = () => {
       sendEmail(email);
       setEmail('');
     }
-    // console.log(email)
   };
+
 
   if (!selectedEmail) {
     return (
@@ -31,13 +32,20 @@ const MailDetail = () => {
     );
   }
 
+
   return (
     <div className="w-full h-full border max-[1200px]:fixed max-[1200px]:bg-white max-[1200px]:w-auto">
       <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between">
         <div className="flex items-center cursor-pointer gap-6">
           <img className="h-[20px] w-[20px]" src={image1} alt="" />
           <img className="h-[20px] w-[20px]" src={image2} alt="" />
-          <img className="h-[20px] w-[20px]" src={image3} alt="" />
+          <img
+            className="h-[20px] w-[20px] cursor-pointer"
+            src={image3}
+            alt=""
+            onClick={() => handleDelete()}
+          />
+
           <div className="text-[#adadad]">|</div>
           <div className="text-[20px] pt-1">
             <ion-icon name="time-outline"></ion-icon>
@@ -102,4 +110,3 @@ const MailDetail = () => {
 };
 
 export default MailDetail;
-

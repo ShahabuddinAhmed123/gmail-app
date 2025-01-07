@@ -4,8 +4,12 @@ import image3 from "../assets/Icon3.png";
 import image4 from "../assets/Icon4.png";
 import image5 from "../assets/Icon5.png";
 import image6 from "../assets/Icon6.png";
+import React from "react";
+
+
 
 const TrashMails = () => {
+
     return ( 
         <div className="w-[1200px] h-full border">
         <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between">
@@ -41,7 +45,7 @@ const TrashMails = () => {
             {/* // */}
           </div>
         </div>
-        <div className="h-[552px] border-b border-[#adadad] p-4 text-left">
+        <div className="h-[60%] border-b border-[#adadad] p-4 text-left">
          {/* // */}
         </div>
   

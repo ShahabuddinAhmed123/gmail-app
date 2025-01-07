@@ -15,16 +15,3 @@ export const SentProvider = ({ children }) => {
     </SentContext.Provider>
   );
 };
-
-// export const CheckProvider = ({ children }) => {
-//   const [read, setRead] = useState(false);
-//   const [unread, setUnread] = useState(false);
-
-
-//   return (
-//     <SentContext.Provider value={{ value: [read, setRead], value2: [unread, setUnread] }}>
-//       {children}
-//     </SentContext.Provider>
-
-//   );
-// };

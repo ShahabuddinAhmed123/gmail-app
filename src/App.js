@@ -1,16 +1,18 @@
 import "./App.css";
 import Header from "./components/Header";
-import SentContext, { CheckProvider } from "./context/note/SentContext.jsx"
+import InboxProvider from "./context/InboxContent.js";
+import {ReadEmailsProvider}  from "./context/note/ReadEmailsProvider.jsx"
 import { SentProvider } from "./context/note/SentContext.jsx";
-// import { CheckProvider } from "./context/note/SentContext.jsx";
 
 function App() {
   return (
+    <InboxProvider>
     <SentProvider>
-      {/* <CheckProvider> */}
+      <ReadEmailsProvider>
       <Header />
-      {/* </CheckProvider> */}
+      </ReadEmailsProvider>
     </SentProvider>
+    </InboxProvider>
   );
 }
 

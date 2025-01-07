@@ -5,33 +5,21 @@ import { DRAFT_DATA } from "../constants/Draft";
 export default function Draft() {
   const { setSelectedEmail } = useContext(InboxContext);
   const [activeEmail, setActiveEmail] = useState(null); 
-  const [activeButton, setActiveButton] = useState(false)
+  // const [activeButton, setActiveButton] = useState(false)
 
   const handleEmailClick = (email) => {
     setSelectedEmail(email);
     setActiveEmail(email); 
   };
-  function handleActiveButton(){
-    setActiveButton(!activeButton)
-  }
+  // function handleActiveButton(){
+  //   setActiveButton(!activeButton)
+  // }
 
 
   return (
     <div className="w-[432px] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh]  border-r border-[#adadad]">
       <div className="flex items-center border-b border-[#adadad] max-[1200px]:w-full py-2 w-[432px]  px-4 min-h-[54px] justify-between">
-        <h1 className="text-[20px] font-semibold">Draft</h1>
-        <div className="bg-[#dadada] rounded-md gap-1 w-[170px] flex items-center px-1 h-full">
-          <button 
-          onClick={() => handleActiveButton()}
-          className={!activeButton ? " h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md" : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"}>
-            All drafts
-          </button>
-          <button
-          onClick={() => handleActiveButton()}
-          className={activeButton ? " h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md" : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"}>
-            Unread
-          </button>
-        </div>
+        <h1 className="text-[20px] font-semibold">Drafts</h1>
       </div>
       <div className=" w-[94%] border border-[#adadad] min-h-[40px] gap-2 rounded-lg flex items-center px-2 text-[18px] text-stone-700">
         <ion-icon name="search-outline"></ion-icon>
@@ -59,7 +47,7 @@ export default function Draft() {
               {item.MailContent}..
             </p>
             <div className="flex gap-1">
-              <button className="w-72px text-[14px] rounded-lg bg-black text-white p-1">
+              <button className="w-72px text-[14px] rounded-lg bg-black text-white px-2 py-1">
                 Project
               </button>
               <button className="w-72px text-[14px] p-1">Work</button>

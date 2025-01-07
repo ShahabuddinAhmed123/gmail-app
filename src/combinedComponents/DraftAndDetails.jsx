@@ -1,11 +1,11 @@
 import Draft from "../components/Draft";
-import DraftDetails from "../components/DraftMails";
+// import DraftDetails from "../components/DraftMails";
 
 const DraftAndDetails = () => {
     return ( 
         <div className="flex">
             <Draft/>
-            <DraftDetails/>
+            {/* <DraftDetails/> */}
         </div>
      );
 }

@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import logo from "../assets/Icon.png";
 import { SentContext } from "../context/note/SentContext";
+import Compose from "./Compose";
+import { InboxContext } from "../context/InboxContent";
+import { DRAFT_DATA } from "../constants/Draft";
 
 const Sidebar = ( 
   {handleChange, 
@@ -20,6 +23,7 @@ const Sidebar = (
     setOpenSidebar(!openSidebar);
   }
     const { sentEmails } = useContext(SentContext);
+    const { trashEmails, jsonData } = useContext(InboxContext);
 
   return (
     <div
@@ -48,7 +52,7 @@ const Sidebar = (
             {openSidebar && (
               <div className="flex w-full justify-between">
                 <p className="text-[16px]">Inbox</p>
-                <p className="text-[16px]">10</p>
+                <p className="text-[16px]">{jsonData.length}</p>
               </div>
             )}
           </div>
@@ -68,8 +72,8 @@ const Sidebar = (
               <div className="flex w-full justify-between">
                 <p className="text-[16px]">Drafts</p>
                 <p className="text-[16px]">
-                            3
-                        </p>
+                  {DRAFT_DATA.length}
+                </p>
               </div>
             )}
           </div>
@@ -88,7 +92,7 @@ const Sidebar = (
               <div className="flex w-full justify-between">
                 <p className="text-[16px]">Sent</p>
                 <p className="text-[16px]">
-                            {sentEmails.length}
+                {sentEmails.length}
                         </p>
               </div>
             )}
@@ -108,9 +112,9 @@ const Sidebar = (
             {openSidebar && (
               <div className="flex w-full justify-between">
                 <p className="text-[16px]">Trash</p>
-                {/* <p className="text-[16px]">
-                            0
-                        </p> */}
+                <p className="text-[16px]">
+                            {trashEmails.length}
+                        </p>
               </div>
             )}
           </div>
@@ -135,6 +139,7 @@ const Sidebar = (
             )}
           </div>
         </div>
+       {openSidebar && <Compose/>}
       </div>
     </div>
   );

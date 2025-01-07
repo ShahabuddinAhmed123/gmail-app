@@ -1,5 +1,6 @@
 export const INBOX_DATA = [
   {
+    id: 1,
     Name: "Alice Johnson",
     Email: "alice.johnson@example.com",
     Date: "2025-01-02",
@@ -15,6 +16,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 2,
     Name: "Michael Brown",
     Email: "michael.brown@example.com",
     Date: "2025-01-01",
@@ -30,6 +32,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 3,
     Name: "Emily Davis",
     Email: "emily.davis@example.com",
     Date: "2025-01-02",
@@ -45,6 +48,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 4,
     Name: "John Carter",
     Email: "john.carter@example.com",
     Date: "2025-01-02",
@@ -59,6 +63,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 5,
     Name: "Sophia Miller",
     Email: "sophia.miller@example.com",
     Date: "2025-01-01",
@@ -74,6 +79,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 6,
     Name: "James Wilson",
     Email: "james.wilson@example.com",
     Date: "2025-01-02",
@@ -89,6 +95,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 7,
     Name: "Olivia Martinez",
     Email: "olivia.martinez@example.com",
     Date: "2025-01-01",
@@ -104,6 +111,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 8,
     Name: "Liam Anderson",
     Email: "liam.anderson@example.com",
     Date: "2025-01-01",
@@ -119,6 +127,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 9,
     Name: "Charlotte Lee",
     Email: "charlotte.lee@example.com",
     Date: "2025-01-02",
@@ -132,6 +141,7 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
   {
+    id: 10,
     Name: "Benjamin Harris",
     Email: "benjamin.harris@example.com",
     Date: "2025-01-02",
@@ -147,3 +157,8 @@ export const INBOX_DATA = [
     MailContent4: "Thanks,",
   },
 ];
+
+localStorage.setItem("inboxData", JSON.stringify(INBOX_DATA));
+
+ JSON.parse(localStorage.getItem("inboxData"));
+console.log("Stored Data:", storedData);

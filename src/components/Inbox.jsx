@@ -1,43 +1,75 @@
-import { INBOX_DATA } from "../constants/Inbox";
 import React, { useState, useContext } from "react";
 import { InboxContext } from "../context/InboxContent";
-import { SentContext } from "../context/note/SentContext";
+import MailDetail from "./Mails_details";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function Inbox() {
-  const { setSelectedEmail } = useContext(InboxContext);
-  // const {read, setRead} = useContext(SentContext)
-  const [activeEmail, setActiveEmail] = useState(null); 
-  const [activeButton, setActiveButton] = useState(false)
-  // const [readEmail, setReadEmail] = useState(false);
+  const { setSelectedEmail, selectedEmail, deleteEmail, jsonData } = useContext(InboxContext);
+  const [inboxData, setInboxData] = useState(jsonData);
+  const [readEmails, setReadEmails] = useState(new Set());
+  const [activeButton, setActiveButton] = useState(false);
 
   const handleEmailClick = (email) => {
     setSelectedEmail(email);
-    setActiveEmail(email);
-    // setRead(true);
+    setReadEmails((prev) => new Set(prev).add(email));
   };
 
-  function handleActiveButton(){
-    setActiveButton(!activeButton)
-  }
+  const handleActiveButton = (buttonType) => {
+    setActiveButton(buttonType === "unread");
+  };
+
+  const handleDelete = () => {
+    if (!selectedEmail) return;
+    deleteEmail(selectedEmail); 
+    setInboxData((prev) => prev.filter((email) => email !== selectedEmail)); 
+  };
+
+  const filteredEmails = activeButton
+    ? inboxData.filter((email) => !readEmails.has(email))
+    : inboxData;
+
 
   return (
-    <div className="w-[432px] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh]  border-r border-[#adadad]">
-      <div className="flex items-center border-b border-[#adadad] py-2 w-[432px] max-[1200px]:w-full  px-4 min-h-[54px] justify-between">
+    <>
+
+    <div className="w-[432px] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh] border-r border-[#adadad]">
+
+      <div className="flex items-center border-b border-[#adadad] py-2 w-[432px] max-[1200px]:w-full px-4 min-h-[54px] justify-between">
         <h1 className="text-[20px] font-semibold">Inbox</h1>
+        {/* <button
+          onClick={delteJsonData}
+          disabled={!selectedEmail}
+          className={`px-4 py-1 rounded-md text-white ${
+            selectedEmail ? "bg-red-500 hover:bg-red-600" : "bg-gray-300 cursor-not-allowed"
+          }`}
+        >
+          Delete
+        </button> */}
         <div className="bg-[#dadada] rounded-md gap-1 w-[170px] flex items-center px-1 h-full">
-          <button 
-          onClick={() => handleActiveButton()}
-          className={!activeButton ? " h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md" : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"}>
+          <button
+            onClick={() => handleActiveButton("all")}
+            className={
+              !activeButton
+                ? "h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md"
+                : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
+            }
+          >
             All mail
           </button>
           <button
-          onClick={() => handleActiveButton()}
-          className={activeButton ? " h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md" : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"}>
+            onClick={() => handleActiveButton("unread")}
+            className={
+              activeButton
+                ? "h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md"
+                : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
+            }
+          >
             Unread
           </button>
         </div>
       </div>
-      <div className=" w-[94%] border border-[#adadad] min-h-[40px] gap-2 rounded-lg flex items-center px-2 text-[18px] text-stone-700">
+
+      <div className="w-[94%] border border-[#adadad] min-h-[40px] gap-2 rounded-lg flex items-center px-2 text-[18px] text-stone-700">
         <ion-icon name="search-outline"></ion-icon>
         <input
           className="w-full placeholder:text-[16px] placeholder:text-stone-600 outline-none text-[16px]"
@@ -45,12 +77,13 @@ export default function Inbox() {
           type="text"
         />
       </div>
+
       <div className="w-[94%] h-auto flex flex-col gap-[6px] pb-3 overflow-auto">
-        {INBOX_DATA.map((item, index) => (
+        {filteredEmails.map((item, index) => (
           <div
             key={index}
             className={`w-full h-[148px] cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1 ${
-              activeEmail === item ? "bg-[#c9c9c9]" : "hover:bg-[#f1f1f1]"
+              selectedEmail === item ? "bg-[#c9c9c9]" : "hover:bg-[#f1f1f1]"
             }`}
             onClick={() => handleEmailClick(item)}
           >
@@ -63,19 +96,27 @@ export default function Inbox() {
               {item.MailContent}..
             </p>
             <div className="flex items-center justify-between">
-            <div className="flex gap-1">
-              <button className="w-72px text-[14px] rounded-lg bg-black text-white p-y px-2">
-                Project
-              </button>
-              <button className="w-72px text-[14px] p-1">Work</button>
-            </div>
-            {/* <div key={index} className={!read ? "text-[19px] mt-1" : "text-[19px] mt-1 text-blue-500"}>
-            <ion-icon name="checkmark-done-outline"></ion-icon>
-            </div> */}
+              <div className="flex gap-1">
+                <button className="w-72px text-[14px] rounded-lg bg-black text-white px-2">
+                  Project
+                </button>
+                <button className="w-72px text-[14px] p-1">Work</button>
+              </div>
+              <div
+                className={`text-[19px] mt-1 ${
+                  readEmails.has(item) ? "text-blue-500" : ""
+                }`}
+              >
+                <ion-icon name="checkmark-done-outline"></ion-icon>
+              </div>
             </div>
           </div>
         ))}
       </div>
     </div>
+    <MailDetail
+    handleDelete={handleDelete}
+    />
+    </>
   );
 }
