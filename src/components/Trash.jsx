@@ -2,7 +2,11 @@ import React, { useContext } from "react";
 import { InboxContext } from "../context/InboxContent";
 
 const Trash = () => {
-  const { trashEmails, deleteTrash } = useContext(InboxContext); 
+  const { trashEmails, deleteTrash, selectedTrash, setSelectedTrash } = useContext(InboxContext); 
+
+  const handleEmailClick = (email) => {
+    setSelectedTrash(email);
+  };
 
   return (
     <div className="w-[432px] flex flex-col items-center gap-4 h-[100vh] border-r border-[#adadad] max-[1200px]:w-full">
@@ -25,7 +29,10 @@ const Trash = () => {
           trashEmails.map((email, index) => (
             <div
               key={index}
-              className="w-full min-h-[148px] overflow-hidden cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1"
+              onClick={handleEmailClick(index)}
+              className={`"w-full min-h-[148px] overflow-hidden cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1 ${
+                selectedTrash === email ? "bg-[#c9c9c9]" : "hover:bg-[#f1f1f1]"
+              }`}
             >
               <div className="flex justify-between items-center">
                 <h1 className="font-semibold">{email.Name}</h1>

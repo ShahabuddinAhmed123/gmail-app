@@ -172,6 +172,7 @@ console.log("Stored Data:", jsonData);
   const [trashEmails, setTrashEmails] = useState([]);
   const [draftEmails, setDraftEmails] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
+  const [selectedTrash, setSelectedTrash] = useState(null);
   
   const deleteEmail = (email) => {
     setInboxEmails((prev) => prev.filter((item) => item !== email));
@@ -205,6 +206,8 @@ console.log("Stored Data:", jsonData);
         draftEmails,
         setDraftEmails,
         moveToTrash,
+        selectedTrash,
+        setSelectedTrash,
       }}
     >
       {children}

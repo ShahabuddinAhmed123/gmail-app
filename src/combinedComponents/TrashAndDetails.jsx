@@ -5,7 +5,7 @@ const TrashAndDetails = () => {
     return ( 
         <div className="flex">
             <Trash/>
-            <TrashMails />
+            {/* <TrashMails /> */}
         </div>
      );
 }

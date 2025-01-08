@@ -36,7 +36,7 @@ export default function Inbox({handleEmailClick, readEmails}) {
                 : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
             }
           >
-            All mail
+            All mails
           </button>
           <button
             onClick={() => handleActiveButton("unread")}
