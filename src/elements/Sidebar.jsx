@@ -24,7 +24,7 @@ const Sidebar = (
   }
     const { sentEmails } = useContext(SentContext);
     const { draftEmails } = useContext(DraftContext);
-    const { trashEmails, jsonData} = useContext(InboxContext);
+    const { trashEmails, jsonData, archiveEmails} = useContext(InboxContext);
 
   return (
     <div
@@ -133,9 +133,9 @@ const Sidebar = (
             {openSidebar && (
               <div className="flex w-full justify-between">
                 <p className="text-[16px]">Archive</p>
-                {/* <p className="text-[16px]">
-                            
-                        </p> */}
+                <p className="text-[16px]">
+                            {archiveEmails.length}
+                        </p>
               </div>
             )}
           </div>

@@ -3,7 +3,7 @@ import { InboxContext } from "../context/InboxContent";
 import MailDetail from "./Mails_details";
 
 export default function Inbox({handleEmailClick, readEmails}) {
-  const { selectedEmail, deleteEmail, jsonData } = useContext(InboxContext);
+  const { selectedEmail, deleteEmail, jsonData, handleArchiveEmail } = useContext(InboxContext);
   const [inboxData, setInboxData] = useState(jsonData);
   const [activeButton, setActiveButton] = useState(false);
 
@@ -15,6 +15,12 @@ export default function Inbox({handleEmailClick, readEmails}) {
   const handleDelete = () => {
     if (!selectedEmail) return;
     deleteEmail(selectedEmail); 
+    setInboxData((prev) => prev.filter((email) => email !== selectedEmail)); 
+  };
+
+  const handelArchive = () => {
+    if (!selectedEmail) return;
+    handleArchiveEmail(selectedEmail); 
     setInboxData((prev) => prev.filter((email) => email !== selectedEmail)); 
   };
 
@@ -98,6 +104,7 @@ export default function Inbox({handleEmailClick, readEmails}) {
     </div>
     <MailDetail
     handleDelete={handleDelete}
+    handelArchive={handelArchive}
     />
     </>
   );

@@ -166,13 +166,15 @@ const InboxProvider = ({ children }) => {
   localStorage.setItem("inboxData", JSON.stringify(jsonData));
 
  JSON.parse(localStorage.getItem("inboxData"));
-console.log("Stored Data:", jsonData);
+// console.log("Stored Data:", jsonData);
 
   const [inboxEmails, setInboxEmails] = useState([]);
   const [trashEmails, setTrashEmails] = useState([]);
+  const [archiveEmails, setArchiveEmails] = useState([]);
   const [draftEmails, setDraftEmails] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [selectedTrash, setSelectedTrash] = useState(null);
+  const [selectedArchive, setSelectedArchive] = useState(null);
   
   const deleteEmail = (email) => {
     setInboxEmails((prev) => prev.filter((item) => item !== email));
@@ -182,6 +184,12 @@ console.log("Stored Data:", jsonData);
       setSelectedEmail(null);
     }
   };
+
+  const handleArchiveEmail = (email) => {
+    setInboxEmails((prev) => prev.filter((item) => item !== email));
+    setArchiveEmails((prev) => [...prev, email]);
+    setJsonData((prev) => prev.filter((e) => e !== email));
+  }
   
   const moveToTrash = (email) => {
     setTrashEmails((prev) => [...prev, email]);
@@ -191,7 +199,26 @@ console.log("Stored Data:", jsonData);
   const deleteTrash = () => {
     setTrashEmails([]);
   };
+
+  const deleteArchive = () => {
+    setArchiveEmails([]);
+  }
+
+  const handleDelete = (email) => {
+    setTrashEmails((prev) => prev.filter((item) => item !== email));
+    if (selectedTrash === email) {
+      setSelectedTrash(null);
+    }
+  };
+
+  const handleDeleteArchive = (email) => {
+    setArchiveEmails((prev) => prev.filter((item) => item !== email));
+    if (selectedArchive === email) {
+      setSelectedArchive(null);
+    }
+  };
   
+
   return (
     <InboxContext.Provider
       value={{
@@ -208,6 +235,13 @@ console.log("Stored Data:", jsonData);
         moveToTrash,
         selectedTrash,
         setSelectedTrash,
+        handleArchiveEmail,
+        archiveEmails,
+        selectedArchive,
+        setSelectedArchive,
+        deleteArchive,
+        handleDelete,
+        handleDeleteArchive
       }}
     >
       {children}

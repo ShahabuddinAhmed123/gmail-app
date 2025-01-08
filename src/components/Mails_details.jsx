@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import { InboxContext } from "../context/InboxContent";
-import image1 from "../assets/Icon1.png";
-import image2 from "../assets/Icon2.png";
 import image3 from "../assets/Icon3.png";
 import image4 from "../assets/Icon4.png";
 import image5 from "../assets/Icon5.png";
 import image6 from "../assets/Icon6.png";
 import { SentContext } from '../context/note/SentContext';
 
-const MailDetail = ({ handleDelete }) => {
+const MailDetail = ({ handleDelete, handelArchive }) => {
 
   const { selectedEmail } = useContext(InboxContext);
 
@@ -37,8 +35,12 @@ const MailDetail = ({ handleDelete }) => {
     <div className="w-full h-full border max-[1200px]:fixed max-[1200px]:bg-white max-[1200px]:w-auto">
       <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between">
         <div className="flex items-center cursor-pointer gap-6">
-          <img className="h-[20px] w-[20px]" src={image1} alt="" />
-          <img className="h-[20px] w-[20px]" src={image2} alt="" />
+          <div 
+          className="text-[19px] mt-1 leading-none"
+          onClick={() => handelArchive()}
+          >
+          <ion-icon name="archive-outline"></ion-icon>
+          </div>
           <img
             className="h-[20px] w-[20px] cursor-pointer"
             src={image3}
