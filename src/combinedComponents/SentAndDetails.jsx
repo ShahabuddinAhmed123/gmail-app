@@ -5,7 +5,7 @@ const SentAndDetails = () => {
     return ( 
         <div className="flex">
             <Sent/>
-            <SentMails/>
+            {/* <SentMails/> */}
         </div>
      );
 }

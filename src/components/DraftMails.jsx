@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { InboxContext } from "../context/InboxContent";
 import image1 from "../assets/Icon1.png";
 import image2 from "../assets/Icon2.png";
@@ -8,7 +8,7 @@ import image5 from "../assets/Icon5.png";
 import image6 from "../assets/Icon6.png";
 
 const DraftDetails = () => {
-  const { selectedEmail, setSelectedEmail } = useContext(InboxContext);
+  const { selectedEmail } = useContext(InboxContext);
 
   if (!selectedEmail) {
     return (

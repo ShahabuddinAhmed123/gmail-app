@@ -44,15 +44,15 @@ const SentMails = () => {
             </div>
             <div className="text-left">
               <h1>
-              To: {selectedEmail.Name}
+              To: {sentEmails.title}
               </h1>
               <h1>
-              Topic: {selectedEmail.Topic}
+              Topic: {sentEmails.email}
               </h1>
             </div>
           </div>
           <div className="text-[14px] text-[#7c7b7b] flex gap-1">
-            {/* Topic:{selectedEmail.Topic} */}
+            Topic:{sentEmails.content}
           </div>
         </div>
         <div className="h-[] border-b border-[#adadad] p-5 pb-20 text-left">

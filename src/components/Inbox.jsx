@@ -1,18 +1,12 @@
 import React, { useState, useContext } from "react";
 import { InboxContext } from "../context/InboxContent";
 import MailDetail from "./Mails_details";
-import { useLocalStorage } from "@uidotdev/usehooks";
 
-export default function Inbox() {
-  const { setSelectedEmail, selectedEmail, deleteEmail, jsonData } = useContext(InboxContext);
+export default function Inbox({handleEmailClick, readEmails}) {
+  const { selectedEmail, deleteEmail, jsonData } = useContext(InboxContext);
   const [inboxData, setInboxData] = useState(jsonData);
-  const [readEmails, setReadEmails] = useState(new Set());
   const [activeButton, setActiveButton] = useState(false);
 
-  const handleEmailClick = (email) => {
-    setSelectedEmail(email);
-    setReadEmails((prev) => new Set(prev).add(email));
-  };
 
   const handleActiveButton = (buttonType) => {
     setActiveButton(buttonType === "unread");
@@ -27,24 +21,12 @@ export default function Inbox() {
   const filteredEmails = activeButton
     ? inboxData.filter((email) => !readEmails.has(email))
     : inboxData;
-
-
   return (
     <>
-
     <div className="w-[432px] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh] border-r border-[#adadad]">
 
       <div className="flex items-center border-b border-[#adadad] py-2 w-[432px] max-[1200px]:w-full px-4 min-h-[54px] justify-between">
         <h1 className="text-[20px] font-semibold">Inbox</h1>
-        {/* <button
-          onClick={delteJsonData}
-          disabled={!selectedEmail}
-          className={`px-4 py-1 rounded-md text-white ${
-            selectedEmail ? "bg-red-500 hover:bg-red-600" : "bg-gray-300 cursor-not-allowed"
-          }`}
-        >
-          Delete
-        </button> */}
         <div className="bg-[#dadada] rounded-md gap-1 w-[170px] flex items-center px-1 h-full">
           <button
             onClick={() => handleActiveButton("all")}

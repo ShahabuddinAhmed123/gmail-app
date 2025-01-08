@@ -27,7 +27,7 @@ const MailDetail = ({ handleDelete }) => {
   if (!selectedEmail) {
     return (
       <div className="w-[60vw] max-[1200px]:hidden h-full flex items-center justify-center text-gray-500">
-        <p>Select an email to view details</p>
+        <p>Select an email to view details.</p>
       </div>
     );
   }
@@ -93,7 +93,7 @@ const MailDetail = ({ handleDelete }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
           placeholder={`Reply ${selectedEmail.Name}...`}
-          className="w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#333232] border-2 mx-auto"
+          className="resize-none w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#333232] border-2 mx-auto"
         ></textarea>
         <div className="flex px-4 w-full justify-between items-center">
           <div className="cursor-pointer">Mute this thread</div>

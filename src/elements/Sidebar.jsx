@@ -3,7 +3,7 @@ import logo from "../assets/Icon.png";
 import { SentContext } from "../context/note/SentContext";
 import Compose from "./Compose";
 import { InboxContext } from "../context/InboxContent";
-import { DRAFT_DATA } from "../constants/Draft";
+import { DraftContext } from "../context/note/DraftContext";
 
 const Sidebar = ( 
   {handleChange, 
@@ -23,7 +23,8 @@ const Sidebar = (
     setOpenSidebar(!openSidebar);
   }
     const { sentEmails } = useContext(SentContext);
-    const { trashEmails, jsonData } = useContext(InboxContext);
+    const { draftEmails } = useContext(DraftContext);
+    const { trashEmails, jsonData} = useContext(InboxContext);
 
   return (
     <div
@@ -72,7 +73,7 @@ const Sidebar = (
               <div className="flex w-full justify-between">
                 <p className="text-[16px]">Drafts</p>
                 <p className="text-[16px]">
-                  {DRAFT_DATA.length}
+                 {draftEmails.length}
                 </p>
               </div>
             )}

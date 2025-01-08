@@ -3,10 +3,6 @@ import React, { createContext, useState } from "react";
 export const InboxContext = createContext();
 
 const InboxProvider = ({ children }) => {
-  const [inboxEmails, setInboxEmails] = useState([]);
-  const [trashEmails, setTrashEmails] = useState([]);
-  // const [draftEmails, setDraftEmails] = useState([]);
-  const [selectedEmail, setSelectedEmail] = useState(null);
 
   const [jsonData, setJsonData] = useState([
     {
@@ -167,21 +163,34 @@ const InboxProvider = ({ children }) => {
       MailContent4: "Thanks,",
     },
   ]);
+  localStorage.setItem("inboxData", JSON.stringify(jsonData));
 
+ JSON.parse(localStorage.getItem("inboxData"));
+console.log("Stored Data:", jsonData);
 
+  const [inboxEmails, setInboxEmails] = useState([]);
+  const [trashEmails, setTrashEmails] = useState([]);
+  const [draftEmails, setDraftEmails] = useState([]);
+  const [selectedEmail, setSelectedEmail] = useState(null);
+  
   const deleteEmail = (email) => {
     setInboxEmails((prev) => prev.filter((item) => item !== email));
     setTrashEmails((prev) => [...prev, email]);
+    setJsonData((prev) => prev.filter((e) => e !== email));
     if (selectedEmail === email) {
       setSelectedEmail(null);
     }
   };
+  
+  const moveToTrash = (email) => {
+    setTrashEmails((prev) => [...prev, email]);
+    setJsonData((prev) => prev.filter((e) => e !== email));
+  };
+
   const deleteTrash = () => {
     setTrashEmails([]);
   };
-
-
-
+  
   return (
     <InboxContext.Provider
       value={{
@@ -193,6 +202,9 @@ const InboxProvider = ({ children }) => {
         deleteEmail,
         jsonData,
         setJsonData,
+        draftEmails,
+        setDraftEmails,
+        moveToTrash,
       }}
     >
       {children}
@@ -201,3 +213,4 @@ const InboxProvider = ({ children }) => {
 };
 
 export default InboxProvider;
+

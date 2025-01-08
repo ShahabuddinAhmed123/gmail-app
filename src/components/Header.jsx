@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Sidebar from "../elements/Sidebar";
-import InboxAndDetails from "../combinedComponents/InboxAndDetails";
-import DraftAndDetails from "../combinedComponents/DraftAndDetails";
 import SentAndDetails from "../combinedComponents/SentAndDetails";
 import TrashAndDetails from "../combinedComponents/TrashAndDetails";
 import ArchiveAndDetails from "../combinedComponents/ArchiveAndDetails";
 import mainImage from "../assets/Icon.png"
+import Inbox from "./Inbox";
+import { InboxContext } from "../context/InboxContent";
+import DraftAndDetails from "../combinedComponents/DraftAndDetails";
 
 export default function Header() {
 
@@ -15,7 +16,8 @@ export default function Header() {
   const [openTrash, setOpenTrash] = useState(false)
   const [openArchive, setOpenArchive] = useState(false)
   const [open, setOpen] = useState(true)
-
+  const [readEmails, setReadEmails] = useState(new Set());
+  const {setSelectedEmail} = useContext(InboxContext)
 
   function handleChange(){
     setIsChanged(!isChanged)
@@ -57,6 +59,10 @@ export default function Header() {
     setOpenSent(false)
     setOpen(false)
   }
+  const handleEmailClick = (email) => {
+    setSelectedEmail(email);
+    setReadEmails((prev) => new Set(prev).add(email));
+  };
 
   return (
     <div className="w-screen h-screen bg-white flex">
@@ -82,7 +88,10 @@ export default function Header() {
         Stellar Mail
         </h1>
        </div>}
-     {isChanged && <InboxAndDetails/>}
+     {isChanged && <Inbox
+     readEmails={readEmails}
+     handleEmailClick={handleEmailClick}
+     />}
      {
       openDraft && <DraftAndDetails/>
      }
