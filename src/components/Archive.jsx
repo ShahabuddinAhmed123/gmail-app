@@ -45,7 +45,7 @@ const Archive = () => {
             <div
               key={index}
               onClick={() => handleArchive(email)}
-              className={`w-full h-[148px] overflow-hidden cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1 ${
+              className={`w-full min-h-[148px] overflow-hidden cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1 ${
                 selectedArchive === email
                   ? "bg-[#c9c9c9]"
                   : "hover:bg-[#f1f1f1]"

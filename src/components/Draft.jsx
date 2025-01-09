@@ -34,7 +34,7 @@ export default function Draft() {
               <>
               <div
                 key={index}
-                className="w-full cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1"
+                className="w-full min-h-[148px] cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1"
                 onClick={handleDraftMAils}
               >
                 <h2 className="text-[15px] font-semibold">Subject: {email.title}</h2>

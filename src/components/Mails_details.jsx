@@ -93,13 +93,13 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
         </div>
 
         <div className="py-4 flex flex-col gap-6">
-          <input
+          <textarea
             value={email}
             name="Email"
             onChange={(e) => setEmail(e.target.value)}
             placeholder={`Reply ${selectedEmail.Name}...`}
             className="resize-none w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#333232] border-2 mx-auto"
-          ></input>
+          ></textarea>
           <div className="flex px-4 w-full justify-between items-center">
             <div className="cursor-pointer">Mute this thread</div>
             <button 
