@@ -51,7 +51,7 @@ const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}
           >
           <ion-icon name="arrow-back-outline"></ion-icon>
           </div>
-          <div 
+          <div
           className="text-[19px] mt-1 leading-none"
           onClick={() => handelArchive()}
           >

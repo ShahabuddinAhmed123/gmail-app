@@ -63,13 +63,13 @@ export default function Sent (){
            <div className="text-left flex items-center justify-between ">
             <div className="flex flex-col gap-2">
              <h2 className="text-[18px] "><span className="font-semibold border-b border-black">Title:</span><br /> {email.title}</h2>
-             <p className=""><span className="font-semibold border-b border-black">To:</span><br /> {email.email}</p>
+             <p className=""><span className="font-semibold border-b border-black">Email:</span><br /> {email.email}</p>
              <p className=""><span className="font-semibold border-b border-black text-wrap">Content:</span><br /> {email.content}</p>
             </div>
            </div>
            <button 
            onClick={handleCloseModal}
-            className="absolute top-5 right-5 leading-none flex items-center justify-center p-2 text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-200 active:scale-95 ">
+            className="absolute top-5 right-5 leading-none flex items-center justify-center p-2 text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-300 bg-stone-200 active:scale-95 ">
            <ion-icon name="close-outline"></ion-icon>
            </button>
         </div>

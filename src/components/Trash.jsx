@@ -82,7 +82,7 @@ const Trash = () => {
        </div>
            <button 
            onClick={handleCloseModal}
-            className="fixed top-5 right-5 leading-none flex items-center justify-center p-2 max-sm:p-1 max-sm:text-2xl text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-200 active:scale-95 max-[450px]:top-11 max-[450px]:right-6">
+            className="fixed top-5 right-5 leading-none flex items-center justify-center p-2 max-sm:p-1 max-sm:text-2xl text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-300 bg-stone-200 active:scale-95 max-[450px]:top-11 max-[450px]:right-6">
            <ion-icon name="close-outline"></ion-icon>
            </button>
         </div>

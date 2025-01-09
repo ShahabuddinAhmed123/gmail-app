@@ -63,7 +63,7 @@ export default function Draft() {
            </div>
            <button 
            onClick={handleCloseModal}
-            className="absolute top-5 right-5 leading-none flex items-center justify-center p-2 text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-200 active:scale-95 ">
+            className="absolute top-5 right-5 leading-none flex items-center justify-center p-2 text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-300 bg-stone-200 active:scale-95 ">
            <ion-icon name="close-outline"></ion-icon>
            </button>
         </div>
@@ -78,7 +78,6 @@ export default function Draft() {
           )}
         </div>
       </div>
-      {/* <DraftDetails /> */}
     </>
   );
 }

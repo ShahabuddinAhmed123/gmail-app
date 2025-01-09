@@ -57,8 +57,6 @@ const Archive = () => {
               </div>
               <p className="text-[14px]">{email.Email}</p>
               <p className="h-[42px] overflow-hidden text-[14px]">{email.MailContent}</p>
-              {/* <p className="text-[14px]">{email.MailContent2}</p> */}
-            
               <div
               className="text-2xl leading-none hover:text-red-600 w-fit max-sm:text-xl"
               onClick={(e) => {
@@ -94,7 +92,7 @@ const Archive = () => {
        </div>
            <button 
            onClick={handleCloseModal}
-            className="fixed top-5 right-5 leading-none flex items-center justify-center p-2 max-sm:p-1 max-sm:text-2xl text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-200 active:scale-95 max-[450px]:top-11 max-[450px]:right-6 ">
+            className="fixed top-5 right-5 leading-none flex items-center justify-center p-2 max-sm:p-1 max-sm:text-2xl text-3xl rounded-full border-2 border-[#adadad] hover:bg-stone-300 bg-stone-200 active:scale-95 max-[450px]:top-11 max-[450px]:right-6 ">
            <ion-icon name="close-outline"></ion-icon>
            </button>
         </div>
