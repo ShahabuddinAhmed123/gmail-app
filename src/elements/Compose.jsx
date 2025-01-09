@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { SentContext } from "../context/note/SentContext";
 import { DraftContext } from "../context/note/DraftContext";
+import penImage from "../assets/pen-solid.svg"
 
 const Compose = () => {
   const [title, setTitle] = useState("");
@@ -38,19 +39,23 @@ const Compose = () => {
 
   return (
     <>
-      <div className="mt-4 px-4">
+      <div className="mt-4 px-4 max-[450px]:px-2 ">
         <button
-          className="w-full h-[45px] border rounded-xl text-white bg-stone-900 hover:bg-stone-700 active:scale-95 transition-all duration-150"
+          className="w-full h-[45px] border rounded-xl text-white bg-stone-900 hover:bg-stone-700 active:scale-95 transition-all max-[450px]:rounded-full duration-150 flex justify-center items-center max-[450px]:text-[12px] max-[450px]:px-1 max-[450px]:h-[35px]"
           onClick={() => handleOpen()}
         >
-          Compose
+          <p className="max-[450px]:hidden">Compose</p>
+          <img 
+          className="min-[451px]:hidden h-4"
+          src={penImage} 
+          alt="" />
         </button>
       </div>
       {openModal && (
         <div className="w-screen h-screen z-50 bg-[rgba(0,0,0,0.4)] backdrop-blur-sm fixed flex items-center justify-center">
-          <div className="w-[70%] h-[70%] p-10 rounded-lg bg-[#fff] flex gap-3 flex-col justify-center items-center">
-            <h1 className="text-3xl font-semibold ">Compose an email</h1>
-            <div className="w-[50%] flex flex-col mt-4">
+          <div className="w-[70%] h-[70%] p-10 max-sm:p-2 rounded-lg bg-[#fff] flex gap-3 flex-col justify-center items-center max-lg:w-[95%]" id="modal">
+            <h1 className="text-3xl font-semibold max-md:text-2xl">Compose an email</h1>
+            <div className="w-[50%] max-lg:w-[90%] flex flex-col mt-4">
             <input
               value={title}
               name="Title"
@@ -73,19 +78,19 @@ const Compose = () => {
               value={emailContent}
               name="Content"
               onChange={(e) => setEmailContent(e.target.value)}
-              className="w-[50%] resize-none outline-none rounded-lg border border-stone-400 p-4 placeholder:text-stone-600"
+              className="w-[50%] resize-none outline-none rounded-lg border border-stone-400 p-4 placeholder:text-stone-600 max-lg:w-[90%]"
               placeholder="Content...."
               rows={10}
             ></textarea>
             <div className="flex gap-4">
               <button
                 onClick={handleSubmit}
-                className="w-[100px] h-[45px] bg-black text-white rounded-xl active:scale-95"
+                className="w-[100px] h-[45px] bg-black text-white rounded-xl active:scale-95 max-md:h-[35px] max-md:text-[14px]"
               >
                 Send
               </button>
               <button
-                className="w-[100px] h-[45px] bg-black text-white rounded-xl active:scale-95"
+                className="w-[100px] h-[45px] bg-black text-white rounded-xl active:scale-95 max-md:h-[35px] max-md:text-[14px]"
                 onClick={handleCancel}
               >
                 Cancel

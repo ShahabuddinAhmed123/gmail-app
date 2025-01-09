@@ -1,13 +1,15 @@
 import React, { useState, useContext } from "react";
 import { InboxContext } from "../context/InboxContent";
 import MailDetail from "./Mails_details";
+import MailModal from "../elements/MailModal";
 
-export default function Inbox({handleEmailClick, readEmails}) {
+export default function Inbox({handleEmailClick, readEmails, closeEmailModal, handleCloseEmailModal, setCloseEmailModal}) {
   const { selectedEmail, deleteEmail, jsonData, handleArchiveEmail } = useContext(InboxContext);
   const [inboxData, setInboxData] = useState(jsonData);
   const [activeButton, setActiveButton] = useState(false);
 
 
+ 
   const handleActiveButton = (buttonType) => {
     setActiveButton(buttonType === "unread");
   };
@@ -32,14 +34,14 @@ export default function Inbox({handleEmailClick, readEmails}) {
     <div className="w-[432px] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh] border-r border-[#adadad]">
 
       <div className="flex items-center border-b border-[#adadad] py-2 w-[432px] max-[1200px]:w-full px-4 min-h-[54px] justify-between">
-        <h1 className="text-[20px] font-semibold">Inbox</h1>
-        <div className="bg-[#dadada] rounded-md gap-1 w-[170px] flex items-center px-1 h-full">
+        <h1 className="text-[20px] font-semibold max-sm:text-[17px]">Inbox</h1>
+        <div className="bg-[#dadada] rounded-md gap-1 w-[170px] max-sm:w-[140px] flex items-center px-1 h-full">
           <button
             onClick={() => handleActiveButton("all")}
             className={
               !activeButton
-                ? "h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md"
-                : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
+              ? "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] bg-white text-[15px] pt-1 text-black rounded-md"
+              : "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
             }
           >
             All mails
@@ -48,8 +50,8 @@ export default function Inbox({handleEmailClick, readEmails}) {
             onClick={() => handleActiveButton("unread")}
             className={
               activeButton
-                ? "h-[30px] w-[80px] bg-white text-[15px] pt-1 text-black rounded-md"
-                : "h-[30px] w-[80px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
+                ? "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] bg-white text-[15px] pt-1 text-black rounded-md"
+                : "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] hover:bg-white text-stone-600 pt-1 hover:text-black text-[15px] rounded-md"
             }
           >
             Unread
@@ -57,7 +59,7 @@ export default function Inbox({handleEmailClick, readEmails}) {
         </div>
       </div>
 
-      <div className="w-[94%] border border-[#adadad] min-h-[40px] gap-2 rounded-lg flex items-center px-2 text-[18px] text-stone-700">
+      <div className="w-[94%] border border-[#adadad] min-h-[40px] gap-2 rounded-lg flex items-center px-2 text-[18px] text-stone-700 relative">
         <ion-icon name="search-outline"></ion-icon>
         <input
           className="w-full placeholder:text-[16px] placeholder:text-stone-600 outline-none text-[16px]"
@@ -71,7 +73,7 @@ export default function Inbox({handleEmailClick, readEmails}) {
           <div
             key={index}
             className={`w-full h-[148px] cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1 ${
-              selectedEmail === item ? "bg-[#c9c9c9]" : "hover:bg-[#f1f1f1]"
+              selectedEmail === item ? "bg-[#e7e7e7]" : "hover:bg-[#f1f1f1]"
             }`}
             onClick={() => handleEmailClick(item)}
           >
@@ -106,6 +108,11 @@ export default function Inbox({handleEmailClick, readEmails}) {
     handleDelete={handleDelete}
     handelArchive={handelArchive}
     />
+ {closeEmailModal && <MailModal
+    handleCloseEmailModal={handleCloseEmailModal}
+    setCloseEmailModal={setCloseEmailModal}
+    closeEmailModal={closeEmailModal}
+    />}
     </>
   );
 }

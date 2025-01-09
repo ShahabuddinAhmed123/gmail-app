@@ -6,8 +6,9 @@ import image5 from "../assets/Icon5.png";
 import image6 from "../assets/Icon6.png";
 import { SentContext } from '../context/note/SentContext';
 
-const MailDetail = ({ handleDelete, handelArchive }) => {
-  const { selectedEmail } = useContext(InboxContext);
+const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}) => {
+    const { selectedEmail, deleteEmail, handleArchiveEmail } = useContext(InboxContext);
+    
 
   const [email, setEmail] = useState('');
   const { sendEmail } = useContext(SentContext);
@@ -18,6 +19,17 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
       sendEmail(email);
       setEmail('');
     }
+  };
+ 
+  const handleDelete = () => {
+    if (!selectedEmail) return;
+    deleteEmail(selectedEmail); 
+  };
+
+  const handelArchive = () => {
+    if (!selectedEmail) return;
+    handleArchiveEmail(selectedEmail);
+    setCloseEmailModal(!closeEmailModal);
   };
 
   if (!selectedEmail) {
@@ -30,10 +42,15 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
 
 
   return (
-    <>
-    <div className="w-full h-full border max-[1200px]:fixed max-[1200px]:bg-white max-[1200px]:hidden">
+    <div className="w-full h-full border max-[1200px]:fixed bg-white max-[1200px]:w-auto min-[1200px]:hidden" id="modal">
       <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between">
         <div className="flex items-center cursor-pointer gap-6">
+
+          <div className="text-[19px] mt-1 leading-none active:text-stone-600 min-[1200px]:hidden"
+          onClick={() => handleCloseEmailModal()}
+          >
+          <ion-icon name="arrow-back-outline"></ion-icon>
+          </div>
           <div 
           className="text-[19px] mt-1 leading-none"
           onClick={() => handelArchive()}
@@ -47,8 +64,8 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
             onClick={() => handleDelete()}
           />
 
-          <div className="text-[#adadad]">|</div>
-          <div className="text-[20px] pt-1">
+          <div className="text-[#adadad] max-lg:hidden">|</div>
+          <div className="text-[20px] pt-1 max-lg:hidden">
             <ion-icon name="time-outline"></ion-icon>
           </div>
         </div>
@@ -56,7 +73,7 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
           <img className="h-[20px] w-[20px]" src={image4} alt="" />
           <img className="h-[20px] w-[20px]" src={image5} alt="" />
           <img className="h-[20px] w-[20px]" src={image6} alt="" />
-          <div className="text-[#adadad]">|</div>
+          <div className="text-[#adadad] max-sm:hidden">|</div>
           <div className="mt-1 text-[17px]">
             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
           </div>
@@ -64,20 +81,20 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
       </div>
       <div className="h-[95px] p-4 border-b-2 border-[#adadad] flex justify-between ">
         <div className="flex gap-4">
-          <div className="w-11 h-11 bg-[#F4F4F5] rounded-full flex items-center justify-center text-[20px]">
+          <div className="w-11 h-11 bg-[#F4F4F5] rounded-full flex items-center justify-center text-[20px] max-[400px]:hidden">
             <ion-icon name="mail-outline"></ion-icon>
           </div>
           <div className="text-left">
-            <h2 className="text-[15px] font-semibold">{selectedEmail.Name}</h2>
-            <p className="text-[14px]">{selectedEmail.Topic}</p>
-            <p className="text-[14px]">{selectedEmail.Email}</p>
+            <h2 className="text-[15px] max-[420px]:text-[14px] font-semibold">{selectedEmail.Name}</h2>
+            <p className="text-[14px] max-[420px]:text-[13px]">{selectedEmail.Topic}</p>
+            <p className="text-[14px] max-[420px]:text-[13px]">{selectedEmail.Email}</p>
           </div>
         </div>
-        <div className="text-[14px] text-[#7c7b7b] flex gap-1">
+        <div className="text-[14px] text-[#7c7b7b] flex gap-1 max-[420px]:text-[13px] ">
           <p>{selectedEmail.Date}</p>, <p>{selectedEmail.Time}</p>
         </div>
       </div>
-      <div className=" pb-20 max-[1440px]:pb-10 max-[1200px]:pb-6 max-[1200px]:text-[15px] border-b border-[#adadad] p-4 text-left">
+      <div className=" pb-20 max-[1440px]:pb-10 max-[1200px]:pb-6 max-[1200px]:text-[15px] border-b border-[#adadad] p-4 text-left max-sm:text-[14px]">
         <h1>{selectedEmail.MailHeading}</h1>
         <p>{selectedEmail.MailContent}</p>
         <br />
@@ -85,17 +102,17 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
         <br />
         <p>{selectedEmail.MailContent3}</p>
         <br />
-        <br />
+        <br className="max-sm:hidden" />
         <p>{selectedEmail.MailContent4}</p>
       </div>
 
-      <div className="py-4 flex flex-col gap-6">
+      <div className="py-4 flex flex-col gap-6 max-sm:gap-3">
         <textarea
         value={email}
         name="Email"
         onChange={(e) => setEmail(e.target.value)}
           placeholder={`Reply ${selectedEmail.Name}...`}
-          className="resize-none w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#333232] border-2 mx-auto"
+          className="resize-none w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#333232] border-2 mx-auto max-sm:p-2"
         ></textarea>
         <div className="flex px-4 w-full justify-between items-center">
           <div className="cursor-pointer">Mute this thread</div>
@@ -108,7 +125,6 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
         </div>
       </div>
     </div>
-    </>
   );
 };
-export default MailDetail;
+export default MailModal;

@@ -28,32 +28,38 @@ const Sidebar = (
 
   return (
     <div
-      className={`${openSidebar ? " h-full bg-white flex gap-0 border-r border-[#adadad] max-[720px]:w-[40%]" : "w-[56px] h-full bg-white flex gap-0 border-r border-[#adadad]"}`}
+      className={`${openSidebar ? " h-full bg-white flex gap-0 border-r border-[#adadad] max-[720px]:w-[40%] max-[450px]:w-[20%]" : "w-[56px] h-full bg-white flex gap-0 border-r border-[#adadad]"}`}
     >
       <div className="w-full h-full flex flex-col">
         <div className="border-b border-[#adadad] h-[54px] flex justify-center items-center ">
-          <div className="flex items-center gap-4 w-[265px] h-[46px] px-3 mx-2 border border-[#adadad] rounded-lg ">
-            <div className="w-[25px]" onClick={() => handleOpen()}>
+          <div className="flex items-center gap-4 w-[265px] h-[46px] px-3 mx-2 border max-[450px]:w-auto border-[#adadad] rounded-lg max-[450px]:border-none max-[450px]:px-0 ">
+            <div className="w-[25px] max-sm:w-[20px] max-[450px]:hidden" onClick={() => handleOpen()}>
               <img src={logo} alt="" />
             </div>
-            {openSidebar && <h1 className="font-semibold">Stellar Mail</h1>}
+            <div className="w-[25px] max-sm:w-[20px] min-[450px]:hidden">
+              <img src={logo} alt="" />
+            </div>
+            {openSidebar && <h1 className="font-semibold max-[450px]:hidden">Stellar Mail</h1>}
           </div>
         </div>
-        <div className="w-full h-auto px-2 flex flex-col border-b gap-2 pt-3 text-[20px]  ">
+        <div className="w-full h-auto px-2 flex  flex-col border-b gap-2 pt-3 text-[20px] max-[450px]:px-0">
           <div className=
           {!isChanged ? 
             "h-[40px] items-center text-black gap-2 cursor-pointer flex w-full hover:bg-black hover:text-white px-2 rounded-lg" 
             :
-            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg" 
+            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg max-[450px]:rounded-none"
           } 
           onClick={handleChange}>
-            <div className="flex items-center">
+            <div className="flex items-center max-sm:text-[19px] max-[450px]:mx-auto  max-[450px]:relative">
              <ion-icon name="mail-outline"></ion-icon>
+             <div className="absolute min-[451px]:hidden bottom-2 -right-3">
+             <p className="text-[14px]" >{jsonData.length}</p>
+             </div>
             </div>
             {openSidebar && (
-              <div className="flex w-full justify-between">
-                <p className="text-[16px]">Inbox</p>
-                <p className="text-[16px]">{jsonData.length}</p>
+              <div className="flex w-full justify-between max-[450px]:hidden">
+                <p className="text-[16px] max-sm:text-[15px] ">Inbox</p>
+                <p className="text-[16px] max-sm:text-[15px]" >{jsonData.length}</p>
               </div>
             )}
           </div>
@@ -63,16 +69,19 @@ const Sidebar = (
             openDraft ? 
             "h-[40px] items-center text-black gap-2 cursor-pointer flex w-full hover:bg-black hover:text-white px-2 rounded-lg" 
             :
-            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg" 
+            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg max-[450px]:rounded-none" 
           } 
            onClick={handleOpenDraft}>
-            <div className="flex items-center">
+            <div className="flex items-center max-sm:text-[19px] max-[450px]:mx-auto max-[450px]:relative">
               <ion-icon name="document-outline"></ion-icon>
+              <div className="absolute min-[451px]:hidden bottom-2 -right-2">
+             <p className="text-[14px] " >{draftEmails.length}</p>
+             </div>
             </div>
             {openSidebar && (
-              <div className="flex w-full justify-between">
-                <p className="text-[16px]">Drafts</p>
-                <p className="text-[16px]">
+              <div className="flex w-full justify-between max-[450px]:hidden">
+                <p className="text-[16px] max-sm:text-[15px]">Drafts</p>
+                <p className="text-[16px] max-sm:text-[15px]">
                  {draftEmails.length}
                 </p>
               </div>
@@ -82,19 +91,22 @@ const Sidebar = (
           {!openSent ? 
             "h-[40px] items-center text-black gap-2 cursor-pointer flex w-full hover:bg-black hover:text-white px-2 rounded-lg" 
             :
-            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg" 
+            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg max-[450px]:rounded-none" 
           } 
           onClick={handleOpenSent}
           >
-            <div className="flex items-center">
+            <div className="flex items-center max-sm:text-[19px] max-[450px]:mx-auto max-[450px]:relative">
               <ion-icon name="paper-plane-outline"></ion-icon>
+              <div className="absolute min-[451px]:hidden bottom-2 -right-2">
+             <p className="text-[14px]" >{sentEmails.length}</p>
+             </div>
             </div>
             {openSidebar && (
-              <div className="flex w-full justify-between">
-                <p className="text-[16px]">Sent</p>
-                <p className="text-[16px]">
-                {sentEmails.length}
-                        </p>
+              <div className="flex w-full justify-between max-[450px]:hidden">
+                <p className="text-[16px] max-sm:text-[15px]">Sent</p>
+                <p className="text-[16px] max-sm:text-[15px]">
+                            {sentEmails.length}
+                </p>
               </div>
             )}
           </div>
@@ -103,19 +115,22 @@ const Sidebar = (
           {!openTrash ? 
             "h-[40px] items-center text-black gap-2 cursor-pointer flex w-full hover:bg-black hover:text-white px-2 rounded-lg" 
             :
-            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg" 
+            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg max-[450px]:rounded-none" 
           } 
           onClick={handleOpenTrash}
           >
-            <div className="flex items-center" onClick={() => handleOpen()}>
+            <div className="flex items-center max-sm:text-[19px] max-[450px]:mx-auto max-[450px]:relative">
               <ion-icon name="trash-outline"></ion-icon>
+              <div className="absolute min-[451px]:hidden bottom-2 -right-2">
+             <p className="text-[14px]" >{trashEmails.length}</p>
+             </div>
             </div>
             {openSidebar && (
-              <div className="flex w-full justify-between">
-                <p className="text-[16px]">Trash</p>
-                <p className="text-[16px]">
+              <div className="flex w-full justify-between max-[450px]:hidden">
+                <p className="text-[16px] max-sm:text-[15px]">Trash</p>
+                <p className="text-[16px] max-sm:text-[15px]">
                             {trashEmails.length}
-                        </p>
+                </p>
               </div>
             )}
           </div>
@@ -123,24 +138,29 @@ const Sidebar = (
           {!openArchive ? 
             "h-[40px] items-center text-black gap-2 cursor-pointer flex w-full hover:bg-black hover:text-white px-2 rounded-lg" 
             :
-            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg" 
+            "h-[40px] gap-2 items-center cursor-pointer flex w-full  bg-black text-white px-2 rounded-lg max-[450px]:rounded-none" 
           } 
           onClick={handleOpenArchive}
           >
-            <div className="flex  items-center" onClick={() => handleOpen()}>
+            <div className="flex items-center max-sm:text-[19px] max-[450px]:mx-auto max-[450px]:relative">
               <ion-icon name="archive-outline"></ion-icon>
+              <div className="absolute min-[451px]:hidden bottom-2 -right-2">
+             <p className="text-[14px] " >{archiveEmails.length}</p>
+             </div>
             </div>
             {openSidebar && (
-              <div className="flex w-full justify-between">
-                <p className="text-[16px]">Archive</p>
-                <p className="text-[16px]">
+              <div className="flex w-full justify-between max-[450px]:hidden">
+                <p className="text-[16px] max-sm:text-[15px]">Archive</p>
+                <p className="text-[16px] max-sm:text-[15px]">
                             {archiveEmails.length}
                         </p>
               </div>
             )}
           </div>
         </div>
-       {openSidebar && <Compose/>}
+       {openSidebar && 
+  <Compose/>     
+       }
       </div>
     </div>
   );

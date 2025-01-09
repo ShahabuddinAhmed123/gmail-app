@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import Sidebar from "../elements/Sidebar";
-import SentAndDetails from "../combinedComponents/SentAndDetails";
-import TrashAndDetails from "../combinedComponents/TrashAndDetails";
-import ArchiveAndDetails from "../combinedComponents/ArchiveAndDetails";
 import mainImage from "../assets/Icon.png"
 import Inbox from "./Inbox";
 import { InboxContext } from "../context/InboxContent";
-import DraftAndDetails from "../combinedComponents/DraftAndDetails";
+import Sent from "./Sent";
+import Trash from "./Trash";
+import Draft from "./Draft";
+import Archive from "./Archive";
 
 export default function Header() {
 
@@ -18,6 +18,11 @@ export default function Header() {
   const [open, setOpen] = useState(true)
   const [readEmails, setReadEmails] = useState(new Set());
   const {setSelectedEmail} = useContext(InboxContext)
+  const [closeEmailModal, setCloseEmailModal] = useState(false);
+      
+      function handleCloseEmailModal(){
+        setCloseEmailModal(!closeEmailModal)
+      }
 
   function handleChange(){
     setIsChanged(!isChanged)
@@ -62,6 +67,7 @@ export default function Header() {
   const handleEmailClick = (email) => {
     setSelectedEmail(email);
     setReadEmails((prev) => new Set(prev).add(email));
+    setCloseEmailModal(!closeEmailModal);
   };
 
   return (
@@ -82,22 +88,25 @@ export default function Header() {
        className="w-full relative bg-[#f3f3f3] h-full flex flex-col justify-center items-center">
         <img 
         id="StellarMail"
-        className="w-[150px]"
+        className="w-[150px] max-[450px]:w-[100px]"
         src={mainImage} alt="" />
-        <h1 className="text-[30px] font-semibold text-stone-800">
+        <h1 className="text-[30px] font-semibold text-stone-800 max-[450px]:text-[25px] ">
         Stellar Mail
         </h1>
        </div>}
      {isChanged && <Inbox
      readEmails={readEmails}
      handleEmailClick={handleEmailClick}
+     closeEmailModal= {closeEmailModal}
+     handleCloseEmailModal={handleCloseEmailModal}
+     setCloseEmailModal={setCloseEmailModal}
      />}
      {
-      openDraft && <DraftAndDetails/>
+      openDraft && <Draft/>
      }
-     {openSent && <SentAndDetails/>}
-     {openTrash && <TrashAndDetails/>}
-     {openArchive && <ArchiveAndDetails/>}
+     {openSent && <Sent/>}
+     {openTrash && <Trash/>}
+     {openArchive && <Archive/>}
     </div>
   );
 }
