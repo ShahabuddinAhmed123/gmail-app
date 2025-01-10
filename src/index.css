@@ -44,3 +44,81 @@ body {
     scale: 1;
   }
 }
+#pallets{
+  animation-name: pallets;
+  animation-duration: 1s;
+}
+@keyframes pallets {
+  0%{
+    margin-top: -150px;
+  }
+  100%{
+    margin-top: 0px;
+  }
+}
+
+.dark #mainDiv{
+  background-color: #16396d;
+  color: white;
+}
+
+.dark #text{
+  color: white;
+}
+
+.dark #modal{
+  background-color: #38598b;
+  color: white;
+}
+.dark #inputs::placeholder{
+color: white;
+}
+.dark #inputs{
+  border-color: white;
+}
+
+
+.blue #mainDiv {
+  background-color: #F4FFC3;
+  color: #5D8736;
+}
+
+.blue #text {
+  color: #5D8736;
+}
+.blue body{
+  border-color: #5D8736;
+}
+
+.blue #modal {
+  background-color: #F4FFC3;
+  color: #5D8736;
+}
+.blue #inputs{
+color: #5D8736;
+}
+.blue #button{
+  background-color: #A9C46C;
+}
+
+
+
+.green #mainDiv {
+  background-color: #faf0e4;
+  color: #6b3a04;
+}
+
+.green #text {
+  color: #6b3a04;
+}
+
+.green #modal {
+  background-color: #F1DEC9;
+  color: #6b3a04;
+}
+.green #inputs{
+  color: #6b3a04;
+}
+.green #button{
+  background-color: #A4907C;
+}

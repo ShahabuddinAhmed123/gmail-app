@@ -71,7 +71,7 @@ export default function Header() {
   };
 
   return (
-    <div className="w-screen h-screen bg-white flex">
+    <div className="w-screen h-screen bg-white flex" id="mainDiv">
       <Sidebar
       handleChange={handleChange}
       handleOpenDraft={handleOpenDraft}
@@ -85,12 +85,12 @@ export default function Header() {
       openArchive={openArchive}
        />
       {open && <div 
-       className="w-full relative bg-[#f3f3f3] h-full flex flex-col justify-center items-center">
+       className="w-full relative bg-[#f1f8fd] h-full flex flex-col text-stone-800 justify-center items-center" id="mainDiv">
         <img 
         id="StellarMail"
         className="w-[150px] max-[450px]:w-[100px]"
         src={mainImage} alt="" />
-        <h1 className="text-[30px] font-semibold text-stone-800 max-[450px]:text-[25px] ">
+        <h1 className="text-[30px] font-semibold  max-[450px]:text-[25px] ">
         Stellar Mail
         </h1>
        </div>}
