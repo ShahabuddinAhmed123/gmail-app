@@ -28,20 +28,44 @@ export default function ColorPalletes () {
       }
       </div>
       {openGrid &&
-      <div className="flex flex-col gap-1 w-fit bg-[#b89d6b] p-2 rounded-lg">
-      <div className="flex items-center gap-2 max-[600px]:flex-col max-[600px]:items-start">
-      <h1 className="text-xl font-semibold max-[900px]:text-[18px] max-[900px]:font-medium">Themes</h1>
-     <div className="grid grid-cols-3 h-fit cursor-pointer w-fit bg-[#b89d6b]  gap-2 max-[600px]:grid-cols-2 max-[400px]:grid-cols-1">
+      <div className="flex flex-col gap-4 w-fit bg-[#b89d6b] p-2 rounded-lg">
+           <div className="flex items-center gap-5 max-[600px]:flex-col max-[600px]:gap-2 max-[600px]:items-start ">
+        <div className="grid w-[256px] grid-cols-2 h-fit cursor-pointer bg-[#b89d6b]  gap-2 max-[400px]:grid-cols-1 max-[600px]:w-[150px]">
+      {MODES.map((theme) => (
+        <div
+        key={theme.name}
+        onClick={() => changeTheme(theme.name)}
+         className="w-full rounded-lg h-[40px] hover:scale-[1.03] overflow-hidden active:scale-[1]"
+         >
+        <div 
+        className="flex h-[40px] items-center justify-center"
+        style={{
+          backgroundColor: theme.backgroundColor1,
+        }}
+        >
+          <h1 
+          style={{
+            color: theme.color,
+          }}
+          className="text-[16px] font-semibold">
+          {theme.mainName}
+          </h1>
+        </div>
+      </div>
+      ))}
+    </div>
+      </div>
+
+     <div className="grid w-[256px] grid-cols-2 h-fit cursor-pointer bg-[#b89d6b]  gap-2 max-[600px]:grid-cols-2 max-[400px]:grid-cols-1 max-[600px]:w-[150px]">
       
       {PALLETES.map((theme) => (
         <div
         key={theme.name}
         onClick={() => changeTheme(theme.name)}
-         className="w-[30px] rounded-full h-[30px] hover:scale-[1.03] overflow-hidden active:scale-[1]"
+         className="w-[100%] rounded-full h-[40px] hover:scale-[1.03] overflow-hidden active:scale-[1]"
          >
         <div
         style={{
-          width: theme.width,
           height: theme.height,
           backgroundColor: theme.backgroundColor1,
         }}
@@ -49,28 +73,6 @@ export default function ColorPalletes () {
       </div>
       ))}
     </div>
-      </div>
-       <div className="flex items-center gap-5 max-[600px]:flex-col max-[600px]:gap-2 max-[600px]:items-start ">
-        <h1 className="text-xl font-semibold max-[900px]:text-[18px] max-[900px]:font-medium max-[400px]:text-[16px]">Modes</h1>
-        <div className="grid grid-cols-2 h-fit cursor-pointer w-fit bg-[#b89d6b]  gap-2 max-[400px]:grid-cols-1">
-      
-      {MODES.map((theme) => (
-        <div
-        key={theme.name}
-        onClick={() => changeTheme(theme.name)}
-         className="w-[30px] rounded-full h-[30px] hover:scale-[1.03] overflow-hidden active:scale-[1]"
-         >
-        <div
-        style={{
-          width: theme.width,
-          height: theme.height,
-          backgroundColor: theme.backgroundColor1,
-        }}
-        ></div>
-      </div>
-      ))}
-    </div>
-      </div>
       </div>
     }
     </div>

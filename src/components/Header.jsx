@@ -29,7 +29,7 @@ export default function Header() {
     setOpenSent(false)
     setOpenTrash(false)
     setOpenArchive(false)
-    setOpen(false)
+    setOpen(!open)
   }
   function handleOpenDraft(){
     setOpenDraft(!openDraft)
@@ -83,7 +83,7 @@ export default function Header() {
       openTrash={openTrash}
       openArchive={openArchive}
        />
-      {open && <div 
+      {/* {open && <div 
        className="w-full relative h-full flex flex-col text-[#111] bg-[#e7eaf6] justify-center items-center" id="mainDiv">
         <div className="text-[80px] leading-none" id="StellarMail">
         <ion-icon name="mail-outline"></ion-icon>
@@ -91,8 +91,8 @@ export default function Header() {
         <h1 className="text-[30px] font-semibold  max-[450px]:text-[25px]" id="StellarMail">
         Stellar Mail
         </h1>
-       </div>}
-     {isChanged && <Inbox
+       </div>} */}
+     {open && <Inbox
      readEmails={readEmails}
      handleEmailClick={handleEmailClick}
      closeEmailModal= {closeEmailModal}
