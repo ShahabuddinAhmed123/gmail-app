@@ -15,13 +15,13 @@ const Trash = () => {
   }
 
   return (
-    <div className="w-[85vw] flex flex-col items-center gap-4 h-[100vh] max-[1200px]:w-full text-[#113f67] bg-[#f1f8fd]" id="mainDiv">
-      <div className={`"flex items-center border-b border-[#5585b5] ${trashEmails.length!==0 ? "w-full flex": " w-full flex"} px-4 min-h-[54px] justify-between max-[1200px]:w-full"`}>
+    <div className="w-[85.4vw] flex flex-col items-center gap-4 h-[100vh] max-[1200px]:w-full text-[#111] bg-[#f1f8fd]" id="mainDiv">
+      <div className={`"flex items-center border-b border-[#adadad] ${trashEmails.length!==0 ? "w-full flex": " w-full flex"} px-4 min-h-[54px] justify-between max-[1200px]:w-full"`}>
         <h1 className="text-[20px] font-semibold max-sm:text-[17px]">Trash</h1>
         <button
         id="button"
         onClick={deleteTrash} 
-        className="p-2 text-[#ffffff] bg-[#38598b] hover:bg-[#5585b5] rounded-lg active:scale-95"
+        className="p-2 text-[#ffffff] bg-[#111] hover:bg-stone-600 rounded-lg active:scale-95  mr-8"
         >Clear Trash
         </button>
       </div>
@@ -38,10 +38,7 @@ const Trash = () => {
             <div
             key={index}
             onClick={() => handleEmailClick(email)} 
-            className={`w-full min-h-[148px] overflow-hidden cursor-pointer transition-all duration-300 border border-[#5585b5] text-left rounded-lg py-2 px-3 flex flex-col gap-1 ${
-              selectedTrash === email ? "bg-[#5585b5] text-white" : "hover:bg-[#f1f1f1]"
-            }`}
-          >
+            className="w-full min-h-[148px] overflow-hidden cursor-pointer transition-all duration-300 border border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1">
             <div className="flex justify-between items-center">
               <h1 className="font-semibold">{email.Name}</h1>
               <p className="text-[14px]">{email.Date}</p>
@@ -84,7 +81,7 @@ const Trash = () => {
            <button 
            onClick={handleCloseModal}
            id="button"
-            className="absolute -top-6 -right-6 leading-none flex items-center justify-center p-2 max-sm:p-1 max-sm:text-2xl text-3xl rounded-full border-2 border-[#5585b5] text-[#ffffff] bg-[#38598b] hover:bg-[#5585b5]  active:scale-95 max-[450px]:top-11 max-[450px]:right-6">
+            className="absolute -top-6 -right-6 leading-none flex items-center justify-center p-2 max-sm:p-1 max-sm:text-2xl text-3xl rounded-full border-2 border-[#adadad] text-[#111] bg-[#fff] hover:bg-stone-300  active:scale-95 max-[450px]:top-11 max-[450px]:right-6">
            <ion-icon name="close-outline"></ion-icon>
            </button>
         </div>

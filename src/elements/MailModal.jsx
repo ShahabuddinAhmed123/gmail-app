@@ -34,7 +34,7 @@ const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}
 
   if (!selectedEmail) {
     return (
-      <div className="w-[60vw] max-[1200px]:hidden h-full flex items-center justify-center text-[#113f67]">
+      <div className="w-[60vw] max-[1200px]:hidden h-full flex items-center justify-center text-[#111]">
         <p>Select an email to view details.</p>
       </div>
     );
@@ -42,8 +42,8 @@ const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}
 
 
   return (
-    <div className="w-full h-full border max-[1200px]:fixed bg-[#f1f8fd] text-[#113f67] max-[1200px]:w-auto min-[1200px]:hidden" id="modal">
-      <div className="flex items-center border-b border-[#5585b5] py-2 w-full px-4 min-h-[53px] justify-between">
+    <div className="w-full h-full border max-[1200px]:fixed bg-[#f1f8fd] text-[#111] max-[1200px]:w-auto min-[1200px]:hidden" id="modal">
+      <div className="flex items-center border-b border-[#adadad] py-2 w-full px-4 min-h-[53px] justify-between">
         <div className="flex items-center cursor-pointer gap-6">
 
           <div className="text-[19px] mt-1 text-black leading-none min-[1200px]:hidden"
@@ -94,7 +94,7 @@ const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}
           <p>{selectedEmail.Date}</p>, <p>{selectedEmail.Time}</p>
         </div>
       </div>
-      <div className=" pb-20 max-[1440px]:pb-10 max-[1200px]:pb-6 max-[1200px]:text-[15px] border-b border-[#5585b5] p-4 text-left max-sm:text-[14px]">
+      <div className=" pb-20 max-[1440px]:pb-10 max-[1200px]:pb-6 max-[1200px]:text-[15px] border-b border-[#adadad] p-4 text-left max-sm:text-[14px]">
         <h1>{selectedEmail.MailHeading}</h1>
         <p>{selectedEmail.MailContent}</p>
         <br />
@@ -112,14 +112,14 @@ const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}
         name="Email"
         onChange={(e) => setEmail(e.target.value)}
           placeholder={`Reply ${selectedEmail.Name}...`}
-          className="resize-none w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#113f67] border border-[#5585b5] bg-transparent mx-auto max-sm:p-2"
+          className="resize-none w-[97%] h-[10vh] rounded-lg max-[1440px]:h-[8vh] p-5 placeholder:text-[#111] border border-[#adadad] bg-transparent mx-auto max-sm:p-2"
         ></textarea>
         <div className="flex px-4 w-full justify-between items-center">
           <div className="cursor-pointer">Mute this thread</div>
           <button 
           onClick={handleSubmit}
           type="submit"
-          className="w-[58px] h-[33px] bg-[#5585b5] text-white hover:bg-[#113f67] rounded-lg">
+          className="w-[58px] h-[33px] bg-[#111] text-white hover:bg-stone-700 rounded-lg">
             Send
           </button>
         </div>

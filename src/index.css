@@ -57,68 +57,140 @@ body {
   }
 }
 
-.dark #mainDiv{
+.blue #mainDiv{
+  color:#16396d;
+}
+
+.blue #text{
+  color: #16396d;
+}
+
+.blue #modal{
+  background-color: #38598b;
+  color: #16396d;
+}
+.blue #inputs::placeholder{
+color: #16396d;
+}
+.blue #inputs{
+  border-color: white;
+}
+.blue #text1{
+  color: #16396d;
+}
+.blue #text1:hover{
+background-color: #38598b;
+color: white;
+}
+.blue #button{
   background-color: #16396d;
   color: white;
 }
-
-.dark #text{
-  color: white;
-}
-
-.dark #modal{
+.blue #button:hover{
   background-color: #38598b;
-  color: white;
-}
-.dark #inputs::placeholder{
-color: white;
-}
-.dark #inputs{
-  border-color: white;
 }
 
 
-.blue #mainDiv {
-  background-color: #F4FFC3;
+/*/////////////////////////////////////////////////////////////////////////////////////////*/
+
+.green #mainDiv {
   color: #5D8736;
 }
-
-.blue #text {
+.green #text {
   color: #5D8736;
 }
-.blue body{
+.green body{
   border-color: #5D8736;
 }
 
-.blue #modal {
+.green #modal {
   background-color: #F4FFC3;
   color: #5D8736;
 }
-.blue #inputs{
+.green #inputs::placeholder{
 color: #5D8736;
 }
-.blue #button{
-  background-color: #A9C46C;
+.green #button{
+  background-color: #809D3C;
+  color: white;
 }
-
-
-
-.green #mainDiv {
-  background-color: #faf0e4;
+.green #button:hover{
+  background-color: #5D8736;
+}
+.green #text1{
+color: #5D8736;
+}
+.green #text1:hover{
+  background-color: #5D8736;
+  color: white;
+}
+/*/////////////////////////////////////////////////////////////////////////////////////////*/
+.brown #mainDiv {
   color: #6b3a04;
 }
 
-.green #text {
+.brown body{
+  background-color: #F1DEC9;
+}
+.brown #text {
   color: #6b3a04;
 }
 
-.green #modal {
+.brown #modal {
   background-color: #F1DEC9;
   color: #6b3a04;
 }
-.green #inputs{
+.brown #inputs::placeholder{
   color: #6b3a04;
 }
-.green #button{
+.brown #button{
+  background-color: #6b3a04;
+  color: white;
+}
+.brown #button:hover{
   background-color: #A4907C;
+  color: #6b3a04;
+}
+.brown #text1{
+  color: #6b3a04;
+  }
+.brown #text1:hover{
+    background-color: #A4907C;
+    color: white;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////*/
+
+.black #mainDiv {
+  color: #fff;
+  background-color: #111;
+}
+.black body{
+  background-color: black;
+}
+.black #text {
+  color: #fff;
+}
+
+.black #modal {
+  background-color: #111;
+  color: #fff;
+}
+.black #inputs::placeholder{
+  color: #fff;
+}
+.black #button{
+  background-color: #111;
+  color: white;
+}
+.black #button:hover{
+  background-color: #111;
+  color: #fff;
+}
+.black #text1{
+  color: #fff;
+  }
+.black #text1:hover{
+    background-color: #111;
+    color: white;
 }

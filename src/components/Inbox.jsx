@@ -29,18 +29,18 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
     : inboxData;
   return (
     <>
-    <div className="w-[432px] bg-[#f1f8fd] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh] border-r border-[#5585b5]" id="mainDiv">
+    <div className="w-[432px] bg-[#f1f8fd] max-[1200px]:w-full flex flex-col items-center gap-4 h-[100vh] border-r border-[#adadad]" id="mainDiv">
 
-      <div className="flex items-center border-b border-[#5585b5] py-2 w-[432px] max-[1200px]:w-full px-4 min-h-[54px] justify-between" id="borders">
-        <h1 className="text-[20px] font-semibold max-sm:text-[17px] text-[#113f67]" id="text">Inbox</h1>
-        <div className="rounded-md gap-1 w-[170px] max-sm:w-[140px] flex items-center px-1 h-full">
+      <div className="flex items-center border-b border-[#adadad] py-2 w-[432px] max-[1200px]:w-full px-4 min-h-[54px] justify-between" id="borders">
+        <h1 className="text-[20px] font-semibold max-sm:text-[17px] text-[#111]" id="text">Inbox</h1>
+        <div className="rounded-md gap-1 w-[170px] max-sm:w-[140px] flex items-center px-1 h-full max-[1200px]:mr-6">
           <button
           id="text"
             onClick={() => handleActiveButton("all")}
             className={
               !activeButton
-              ? "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] text-[15px] pt-1 text-white rounded-md"
-              : "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px]  text-[#113f67] pt-1 text-[15px] rounded-md"
+              ? "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] text-[15px] pt-1 border-2 border-[#dadada] pb-1 text-[#111] rounded-md"
+              : "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px]  text-[#111] pt-1 text-[15px] rounded-md"
             }
           >
             All mails
@@ -50,8 +50,8 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
             onClick={() => handleActiveButton("unread")}
             className={
               activeButton
-                ? "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] text-[15px] pt-1 text-white rounded-md"
-                : "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px]  text-[#113f67] pt-1  text-[15px] rounded-md"
+                ? "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px] text-[15px] pt-1 border-2 border-[#dadada] pb-1 text-black rounded-md"
+                : "h-[30px] w-[80px] max-sm:w-[65px] max-sm:text-[14px]  text-[#111] pt-1  text-[15px] rounded-md"
             }
           >
             Unread
@@ -74,7 +74,7 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
           <div
           id="text"
             key={index}
-            className="w-full h-[148px] cursor-pointer transition-all duration-300 border text-[#38598b] border-[#5585b5] text-left rounded-lg py-2 px-3 flex flex-col gap-1"
+            className="w-full h-[148px] cursor-pointer transition-all duration-300 border text-[#111] border-[#adadad] text-left rounded-lg py-2 px-3 flex flex-col gap-1"
             onClick={() => handleEmailClick(item)}
           >
             <div className="flex justify-between items-center">
@@ -87,7 +87,7 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
             </p>
             <div className="flex items-center justify-between">
               <div className="flex gap-1">
-                <button className="w-72px text-[14px] rounded-lg text-white bg-[#38598b] px-2" id="button">
+                <button className="w-72px text-[14px] rounded-lg text-white bg-black px-2" id="button">
                   Project
                 </button>
                 <button className="w-72px text-[14px] p-1">Work</button>

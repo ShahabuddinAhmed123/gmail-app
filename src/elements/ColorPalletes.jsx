@@ -1,37 +1,43 @@
 import React, { useState } from "react";
 import useTheme from "../context/theme";
 import { PALLETES } from "../constants/colorPallets";
+import { MODES } from "../constants/modes";
 
 export default function ColorPalletes () {
-  const { themeMode, setTheme } = useTheme("light");
+  const {  setTheme } = useTheme("light");
   
     const changeTheme = (theme) => {
       setTheme(theme); 
-      console.log(`Theme changed to: ${theme}`);
+      setOpenGrid(!openGrid)
     };
 
   const [openGrid, setOpenGrid] = useState(false)
   function handleOpenGrid() {
     setOpenGrid(!openGrid)
   }
-
   return (
-    <div className="flex absolute flex-col items-center left-1/2 transform translate-x-[-50%] justify-center ">
-      <div className="text-[30px] leading-none cursor-pointer -mt-4 hover:mt-0 transition-all duration-300 z-50" onClick={() => handleOpenGrid()}>
-      {!openGrid ? <ion-icon name="grid-outline"></ion-icon> : <ion-icon name="close-outline"></ion-icon>}
+    <div className="flex absolute flex-row right-2 top-1 transform translate-[-50%] justify-center z-50">
+      <div className="text-[30px] mt-2 leading-none cursor-pointer transition-all duration-300 z-50 text-[#111]" onClick={() => handleOpenGrid()} id="text">
+      {
+      !openGrid 
+      ? 
+      <ion-icon name="contrast-outline"></ion-icon>
+      :
+      ""
+      // <ion-icon name="chevron-back-outline"></ion-icon>
+      }
       </div>
-    {openGrid && <div className="grid grid-cols-2 cursor-pointer w-[240px] gap-2" id="pallets">
+      {openGrid &&
+      <div className="flex flex-col gap-1 w-fit bg-[#b89d6b] p-2 rounded-lg">
+      <div className="flex items-center gap-2 max-[600px]:flex-col max-[600px]:items-start">
+      <h1 className="text-xl font-semibold max-[900px]:text-[18px] max-[900px]:font-medium">Themes</h1>
+     <div className="grid grid-cols-3 h-fit cursor-pointer w-fit bg-[#b89d6b]  gap-2 max-[600px]:grid-cols-2 max-[400px]:grid-cols-1">
+      
       {PALLETES.map((theme) => (
         <div
         key={theme.name}
         onClick={() => changeTheme(theme.name)}
-        style={{
-          borderTopLeftRadius: theme.rounded,
-          borderBottomRightRadius: theme.rounded,
-          borderTopRightRadius:theme.rounded,
-          borderBottomLeftRadius: theme.rounded
-        }}
-         className="grid grid-cols-2 w-[120px] h-[120px] hover:scale-[1.03] overflow-hidden shadow-md shadow-stone-700 active:scale-[1]"
+         className="w-[30px] rounded-full h-[30px] hover:scale-[1.03] overflow-hidden active:scale-[1]"
          >
         <div
         style={{
@@ -40,30 +46,32 @@ export default function ColorPalletes () {
           backgroundColor: theme.backgroundColor1,
         }}
         ></div>
+      </div>
+      ))}
+    </div>
+      </div>
+       <div className="flex items-center gap-5 max-[600px]:flex-col max-[600px]:gap-2 max-[600px]:items-start ">
+        <h1 className="text-xl font-semibold max-[900px]:text-[18px] max-[900px]:font-medium max-[400px]:text-[16px]">Modes</h1>
+        <div className="grid grid-cols-2 h-fit cursor-pointer w-fit bg-[#b89d6b]  gap-2 max-[400px]:grid-cols-1">
+      
+      {MODES.map((theme) => (
+        <div
+        key={theme.name}
+        onClick={() => changeTheme(theme.name)}
+         className="w-[30px] rounded-full h-[30px] hover:scale-[1.03] overflow-hidden active:scale-[1]"
+         >
         <div
         style={{
           width: theme.width,
           height: theme.height,
-          backgroundColor:theme.backgroundColor2,
-        }}
-        ></div>
-        <div 
-        style={{
-          width: theme.width,
-          height: theme.height,
-          backgroundColor: theme.backgroundColor3
-        }}
-        ></div>
-        <div 
-        style={{
-          width: theme.width,
-          height:theme.height,
-          backgroundColor: theme.backgroundColor4
+          backgroundColor: theme.backgroundColor1,
         }}
         ></div>
       </div>
       ))}
     </div>
+      </div>
+      </div>
     }
     </div>
   );

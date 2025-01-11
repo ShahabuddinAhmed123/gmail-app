@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import Sidebar from "../elements/Sidebar";
-import mainImage from "../assets/Icon.png"
 import Inbox from "./Inbox";
 import { InboxContext } from "../context/InboxContent";
 import Sent from "./Sent";
@@ -71,7 +70,7 @@ export default function Header() {
   };
 
   return (
-    <div className="w-screen h-screen bg-white flex" id="mainDiv">
+    <div className="w-screen h-screen bg-white flex">
       <Sidebar
       handleChange={handleChange}
       handleOpenDraft={handleOpenDraft}
@@ -85,12 +84,11 @@ export default function Header() {
       openArchive={openArchive}
        />
       {open && <div 
-       className="w-full relative bg-[#f1f8fd] h-full flex flex-col text-stone-800 justify-center items-center" id="mainDiv">
-        <img 
-        id="StellarMail"
-        className="w-[150px] max-[450px]:w-[100px]"
-        src={mainImage} alt="" />
-        <h1 className="text-[30px] font-semibold  max-[450px]:text-[25px] ">
+       className="w-full relative h-full flex flex-col text-[#111] bg-[#e7eaf6] justify-center items-center" id="mainDiv">
+        <div className="text-[80px] leading-none" id="StellarMail">
+        <ion-icon name="mail-outline"></ion-icon>
+        </div>
+        <h1 className="text-[30px] font-semibold  max-[450px]:text-[25px]" id="StellarMail">
         Stellar Mail
         </h1>
        </div>}
