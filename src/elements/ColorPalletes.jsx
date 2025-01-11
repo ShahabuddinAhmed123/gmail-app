@@ -5,13 +5,14 @@ import { MODES } from "../constants/modes";
 
 export default function ColorPalletes () {
   const {  setTheme } = useTheme("light");
+  const [openGrid, setOpenGrid] = useState(false)
+
   
     const changeTheme = (theme) => {
       setTheme(theme); 
       setOpenGrid(!openGrid)
     };
 
-  const [openGrid, setOpenGrid] = useState(false)
   function handleOpenGrid() {
     setOpenGrid(!openGrid)
   }
@@ -30,7 +31,7 @@ export default function ColorPalletes () {
       {openGrid &&
       <div className="flex flex-col gap-4 w-fit bg-[#b89d6b] p-2 rounded-lg">
            <div className="flex items-center gap-5 max-[600px]:flex-col max-[600px]:gap-2 max-[600px]:items-start ">
-        <div className="grid w-[256px] grid-cols-2 h-fit cursor-pointer bg-[#b89d6b]  gap-2 max-[400px]:grid-cols-1 max-[600px]:w-[150px]">
+        <div className="grid w-[256px] grid-cols-2 h-fit cursor-pointer bg-[#b89d6b] border-b-2 border-[#524949] pb-4 gap-2 max-[400px]:grid-cols-1 max-[600px]:w-[150px]">
       {MODES.map((theme) => (
         <div
         key={theme.name}

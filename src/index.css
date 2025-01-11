@@ -194,3 +194,40 @@ color: #5D8736;
     background-color: #111;
     color: white;
 }
+
+/*/////////////////////////////////////////////////////////////////////////////////////////*/
+
+.gray #mainDiv {
+  color: #4C585B;
+}
+.gray body{
+  background-color: black;
+}
+.gray #text {
+  color: #4C585B;
+}
+
+.gray #modal {
+  background-color: #111;
+  color: #4C585B;
+}
+.gray #inputs::placeholder{
+  color: #4C585B;
+}
+.gray #button{
+  background-color: #A5BFCC;
+  color: #4C585B;
+  border: 2px solid #7E99A3;
+}
+.gray #button:hover{
+  background-color: #4C585B;
+  color: white;
+}
+.gray #text1{
+  color: #4C585B;
+  }
+.gray #text1:hover{
+    background-color: #A5BFCC;
+    color: #4C585B;
+  border: 2px solid #7E99A3;
+}

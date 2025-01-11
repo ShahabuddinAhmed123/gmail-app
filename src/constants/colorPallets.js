@@ -27,5 +27,11 @@ export const PALLETES = [
     backgroundColor4: "#faf0e4",
     rounded: "20px"
   },
+  {
+    name: "gray",
+    height: "50px",
+    backgroundColor1: "#4C585B",
+    rounded: "20px"
+  },
  
 ];
