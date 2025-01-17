@@ -208,7 +208,7 @@ color: #5D8736;
 }
 
 .gray #modal {
-  background-color: #111;
+  background-color: white;
   color: #4C585B;
 }
 .gray #inputs::placeholder{

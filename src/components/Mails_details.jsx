@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { InboxContext } from "../context/InboxContent";
 import { SentContext } from '../context/note/SentContext';
 
-const MailDetail = ({ handleDelete, handelArchive }) => {
+const MailDetail = ({ handleDelete, handleDeleteArchive }) => {
   const { selectedEmail } = useContext(InboxContext);
   const [email, setEmail] = useState("");
   const { sendEmail } = useContext(SentContext);
@@ -36,7 +36,7 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
           <div className="flex items-center cursor-pointer gap-6" id="text">
             <div 
               className="text-[19px] mt-1 leading-none"
-              onClick={() => handelArchive()}
+              onClick={() => handleDeleteArchive()}
             >
               <ion-icon name="archive-outline"></ion-icon>
             </div>
@@ -52,13 +52,11 @@ const MailDetail = ({ handleDelete, handelArchive }) => {
           <div className="flex items-center cursor-pointer gap-6">
           <div 
               className="text-[19px] mt-1 leading-none"
-              onClick={() => handelArchive()}
             >
               <ion-icon name="return-up-back-outline"></ion-icon>
             </div>
             <div 
               className="text-[19px] mt-1 leading-none"
-              onClick={() => handelArchive()}
             >
               <ion-icon name="return-up-forward-outline"></ion-icon>
             </div>

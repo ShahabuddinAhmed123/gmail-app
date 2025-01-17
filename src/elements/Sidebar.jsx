@@ -33,11 +33,8 @@ const Sidebar = (
       <div className="w-full h-full flex flex-col">
         <div className="border-b border-[#adadad] h-[54px] flex justify-center items-center ">
           <div className="flex items-center gap-4 w-[265px] h-[46px] px-3 mx-2 border max-[450px]:w-auto border-[#adadad] rounded-lg max-[450px]:border-none max-[450px]:px-0 ">
-            <div className="w-[35px] bg-white rounded-full border max-sm:w-[20px] max-[450px]:hidden" onClick={() => handleOpen()}>
-              <img src={logo} alt="" />
-            </div>
-            <div className="w-[50px] max-sm:w-[20px] min-[450px]:hidden">
-              <img src={logo} alt="" />
+            <div className=" text-[24px] mt-1" onClick={() => handleOpen()}>
+            <ion-icon name="mail-open-outline"></ion-icon>
             </div>
             {openSidebar && <h1 className="font-semibold max-[450px]:hidden text-[#111]" id="text">Stellar Mail</h1>}
           </div>

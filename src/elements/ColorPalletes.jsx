@@ -48,7 +48,7 @@ export default function ColorPalletes () {
           style={{
             color: theme.color,
           }}
-          className="text-[16px] font-semibold">
+          className="text-[16px] max-[600px]:text-[12px] font-semibold">
           {theme.mainName}
           </h1>
         </div>

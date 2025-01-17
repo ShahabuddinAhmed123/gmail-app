@@ -18,7 +18,7 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
     setInboxData((prev) => prev.filter((email) => email !== selectedEmail)); 
   };
 
-  const handelArchive = () => {
+  const handleDeleteArchive = () => {
     if (!selectedEmail) return;
     handleArchiveEmail(selectedEmail); 
     setInboxData((prev) => prev.filter((email) => email !== selectedEmail)); 
@@ -58,17 +58,7 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
           </button>
         </div>
       </div>
-{/* 
-      <div id="text" className="w-[94%] border border-[#5585b5] min-h-[40px] gap-2 rounded-lg flex items-center px-2 text-[18px] text-stone-700 relative">
-        <ion-icon name="search-outline"></ion-icon>
-        <input
-        id="text"
-          className="w-full placeholder:text-[16px] bg-transparent placeholder:text-[#38598b] outline-none text-[16px]"
-          placeholder="Search"
-          type="text"
-        />
-      </div> */}
-
+      
       <div className="w-[94%] h-auto flex flex-col gap-[6px] pb-3 overflow-auto">
         {filteredEmails.map((item, index) => (
           <div
@@ -106,7 +96,7 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
     </div>
     <MailDetail
     handleDelete={handleDelete}
-    handelArchive={handelArchive}
+    handleDeleteArchive={handleDeleteArchive}
     />
  {closeEmailModal && <MailModal
     handleCloseEmailModal={handleCloseEmailModal}

@@ -34,8 +34,7 @@ const MailModal = ({ handleCloseEmailModal, closeEmailModal, setCloseEmailModal}
 
   if (!selectedEmail) {
     return (
-      <div className="w-[60vw] max-[1200px]:hidden h-full flex items-center justify-center text-[#111]">
-        <p>Select an email to view details.</p>
+      <div className="w-[0px] max-[1200px]:hidden h-full bg-[#f1f8fd] flex items-center justify-center text-[#111]">
       </div>
     );
   }
