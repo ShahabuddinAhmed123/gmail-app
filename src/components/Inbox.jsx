@@ -4,7 +4,7 @@ import MailDetail from "./Mails_details";
 import MailModal from "../elements/MailModal";
 
 export default function Inbox({handleEmailClick, readEmails, closeEmailModal, handleCloseEmailModal, setCloseEmailModal}) {
-  const { selectedEmail, deleteEmail, jsonData, handleArchiveEmail } = useContext(InboxContext);
+  const { selectedEmail, deleteEmail, jsonData, handleArchiveEmail, setSelectedEmail } = useContext(InboxContext);
   const [inboxData, setInboxData] = useState(jsonData);
   const [activeButton, setActiveButton] = useState(false);
 
@@ -22,6 +22,7 @@ export default function Inbox({handleEmailClick, readEmails, closeEmailModal, ha
     if (!selectedEmail) return;
     handleArchiveEmail(selectedEmail); 
     setInboxData((prev) => prev.filter((email) => email !== selectedEmail)); 
+    setSelectedEmail(!selectedEmail)
   };
 
   const filteredEmails = activeButton
